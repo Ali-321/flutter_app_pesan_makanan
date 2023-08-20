@@ -1,8 +1,27 @@
-import 'package:flutter_application_pesan_makanan/model/makanan.dart';
+import 'package:flutter/cupertino.dart';
 
-class Pesan {
-  Pesan({required this.pesan, required jmlPesan});
-  List<Makanan> pesan;
-  final waktu =
-      DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+class Pesan extends ChangeNotifier {
+  Pesan(
+      {required this.idMakanan,
+      required this.jmlPesan,
+      required this.total,
+      required this.pembayaran,
+      required this.waktu,
+      required this.idPesan});
+
+  String idPesan;
+  String idMakanan;
+  int jmlPesan;
+  int total;
+  String pembayaran;
+  final waktu;
+
+  Map<String, dynamic> toJson() => {
+        'idPesan': idPesan,
+        'idMakanan': idMakanan,
+        'jmlPesan': jmlPesan,
+        'total': total,
+        'pembayaran': pembayaran,
+        'waktu': waktu,
+      };
 }

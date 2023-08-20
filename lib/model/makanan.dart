@@ -1,11 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Makanan {
   String id;
   final String gambar;
   final String nama;
   final int harga;
   final String deskripsi;
+  int jmlPesan;
+  int total;
+  String pembayaran;
+  final waktu;
 
   Makanan({
+    required this.jmlPesan,
+    required this.total,
+    required this.pembayaran,
+    required this.waktu,
     this.id = '',
     required this.gambar,
     required this.nama,
@@ -26,5 +36,9 @@ class Makanan {
       gambar: json['gambar'],
       nama: json['nama'],
       harga: json['harga'],
-      deskripsi: json['deskripsi']);
+      deskripsi: json['deskripsi'],
+      jmlPesan: json['jmlPesan'],
+      total: json['total'],
+      pembayaran: json['pembayaran'],
+      waktu: json['waktu'] as Timestamp);
 }

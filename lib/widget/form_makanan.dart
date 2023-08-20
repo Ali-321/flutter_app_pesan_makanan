@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class FormMakan extends StatelessWidget {
+class FormMakanan extends StatelessWidget {
   final String title;
   final TextEditingController controller;
 
-  const FormMakan({Key? key, required this.title, required this.controller})
+  const FormMakanan({Key? key, required this.title, required this.controller})
       : super(key: key);
 
   @override

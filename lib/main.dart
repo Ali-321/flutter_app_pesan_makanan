@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_application_pesan_makanan/screen/sc_input_menu.dart';
+
+import 'package:flutter_application_pesan_makanan/provider/all_data.dart';
+
 import 'package:flutter_application_pesan_makanan/screen/sc_menu.dart';
+import 'package:provider/provider.dart';
 import 'firebase/firebase_options.dart';
 
 void main() async {
@@ -18,7 +21,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(debugShowCheckedModeBanner: false, home: ScMenu());
+    return ChangeNotifierProvider(
+      create: (context) => AllData()..fetchMakanan(),
+      child:
+          const MaterialApp(debugShowCheckedModeBanner: false, home: ScMenu()),
+    );
   }
 }
 

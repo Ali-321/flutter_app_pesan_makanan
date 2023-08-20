@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_pesan_makanan/komponen/FormMakan.dart';
-import 'package:flutter_application_pesan_makanan/model/menu.dart';
+import 'package:flutter_application_pesan_makanan/widget/form_makanan.dart';
+import 'package:flutter_application_pesan_makanan/model/all_create.dart';
 
 class ScInputMenu extends StatefulWidget {
   const ScInputMenu({super.key});
@@ -10,7 +10,7 @@ class ScInputMenu extends StatefulWidget {
 }
 
 class _ScInputMenuState extends State<ScInputMenu> {
-  Menu menu = Menu();
+  AllCreate ac = AllCreate();
   final controllerGambar = TextEditingController();
   final controllerName = TextEditingController();
   final controllerHarga = TextEditingController();
@@ -25,10 +25,10 @@ class _ScInputMenuState extends State<ScInputMenu> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            FormMakan(title: 'Gambar:', controller: controllerGambar),
-            FormMakan(title: 'Nama', controller: controllerName),
-            FormMakan(title: 'Harga', controller: controllerHarga),
-            FormMakan(title: 'Deskripsi', controller: controllerDesk),
+            FormMakanan(title: 'Gambar:', controller: controllerGambar),
+            FormMakanan(title: 'Nama', controller: controllerName),
+            FormMakanan(title: 'Harga', controller: controllerHarga),
+            FormMakanan(title: 'Deskripsi', controller: controllerDesk),
             IconButton(
                 onPressed: () {
                   final gambar = controllerGambar.text;
@@ -36,11 +36,14 @@ class _ScInputMenuState extends State<ScInputMenu> {
                   final harga = int.parse(controllerHarga.text);
                   final deskripsi = controllerDesk.text;
 
-                  menu.createMakanan(
+                  ac.createMakanan(
                     gambar: gambar,
                     nama: nama,
                     harga: harga,
                     deskripsi: deskripsi,
+                    jmlpesan: 0,
+                    pembayaran: '',
+                    total: 0,
                   );
                 },
                 icon: const Icon(Icons.add)),
