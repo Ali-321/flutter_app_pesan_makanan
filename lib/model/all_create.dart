@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_pesan_makanan/model/makanan.dart';
 import 'package:flutter_application_pesan_makanan/model/pesan.dart';
+import 'package:flutter_application_pesan_makanan/model/riwayat_pesanan.dart';
 
 class AllCreate {
   Future createMakanan({
@@ -47,5 +48,24 @@ class AllCreate {
 
     final json = pesan.toJson();
     await docPesan.set(json);
+  }
+
+  Future createRiwayatPesanan({
+    required int items,
+    required int total,
+    required String? pembayaran,
+  }) async {
+    final docRiwayatMenu =
+        FirebaseFirestore.instance.collection('riwayatPesanan').doc();
+    final riwayatPesanan = RiwayatPesanan(
+      id: docRiwayatMenu.id,
+      items: items,
+      total: total,
+      pembayaran: pembayaran,
+      waktu: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day),
+    );
+    final json = riwayatPesanan.toJson();
+    await docRiwayatMenu.set(json);
   }
 }

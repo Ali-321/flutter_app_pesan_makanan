@@ -40,5 +40,5 @@ class Makanan {
       jmlPesan: json['jmlPesan'],
       total: json['total'],
       pembayaran: json['pembayaran'],
-      waktu: json['waktu'] as Timestamp);
+      waktu: (json['waktu'] as Timestamp).toDate());
 }

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_pesan_makanan/model/all_create.dart';
 import 'package:flutter_application_pesan_makanan/provider/all_data.dart';
 import 'package:provider/provider.dart';
 
+import '../screen/sc_riwayat_pesanan.dart';
+
 class Pembayaran extends StatefulWidget {
+  const Pembayaran({super.key});
+
   @override
   _PembayaranState createState() => _PembayaranState();
 }
@@ -61,8 +66,20 @@ class _PembayaranState extends State<Pembayaran> {
             bottom: 10,
             right: 30,
             left: 30,
-            child:
-                ElevatedButton(onPressed: () {}, child: Text('Bayar Sekarang')))
+            child: ElevatedButton(
+                onPressed: () {
+                  final p = Provider.of<AllData>(context, listen: false);
+                  AllCreate().createRiwayatPesanan(
+                      items: p.items,
+                      total: p.totalPesanan,
+                      pembayaran: p.selectedPembayaran);
+
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ScRiwayatPembayaran()));
+                },
+                child: const Text('Bayar Sekarang')))
       ],
     );
   }

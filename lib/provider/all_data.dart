@@ -1,18 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_pesan_makanan/model/makanan.dart';
-import '../model/pesan.dart';
+import 'package:flutter_application_pesan_makanan/model/riwayat_pesanan.dart';
 
 class AllData extends ChangeNotifier {
   // int _tempJml = 0;
-  List<int> _indexPesan = [];
+  final List<int> _indexPesan = [];
   List<Makanan> _makananList = [];
+  List<RiwayatPesanan> _riwayatPesanan = [];
   String? _selectedPembayaran;
   int _items = 0;
   int _totalPesanan = 0;
   //List<Pesan> _pesanList = [];
 
   List<Makanan> get makananList => _makananList;
+  List<RiwayatPesanan> get riwayatPesanan => _riwayatPesanan;
   int get items => _items;
   int get totalPesanan => _totalPesanan;
   String? get selectedPembayaran => _selectedPembayaran;
@@ -32,8 +34,8 @@ class AllData extends ChangeNotifier {
   }
 */
 
-  void pilihPembayaran(String? selectedPembayaran) {
-    _selectedPembayaran = selectedPembayaran;
+  void pilihPembayaran(String? sPembayaran) {
+    _selectedPembayaran = sPembayaran;
     notifyListeners();
   }
 
@@ -43,13 +45,27 @@ class AllData extends ChangeNotifier {
     notifyListeners();
   }
 */
-  Future<void> fetchMakanan() async {
+  Future<void> fetchAllData() async {
     final snapshot = await FirebaseFirestore.instance.collection('menu').get();
+    final snapshot2 =
+        await FirebaseFirestore.instance.collection('riwayatPesanan').get();
+
     final makananList =
         snapshot.docs.map((e) => Makanan.fromJson(e.data())).toList();
     _makananList = makananList;
+
+    final riwayatPesanan =
+        snapshot2.docs.map((e) => RiwayatPesanan.fromJson(e.data())).toList();
+    _riwayatPesanan = riwayatPesanan;
+
     notifyListeners();
   }
+
+  Stream<List<RiwayatPesanan>> readRiwayatPesan() => FirebaseFirestore.instance
+      .collection('riwayatPesanan')
+      .snapshots()
+      .map((event) =>
+          event.docs.map((e) => RiwayatPesanan.fromJson(e.data())).toList());
 
   void incrementPesanan(String idMakanan) {
     int i = 0;

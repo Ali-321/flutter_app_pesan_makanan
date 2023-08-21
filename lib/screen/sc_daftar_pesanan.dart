@@ -17,7 +17,8 @@ class _ScDaftarPesananState extends State<ScDaftarPesanan> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Daftar Pesanan')),
+        title: const Text('Daftar Pesanan'),
+        backgroundColor: const Color.fromARGB(255, 15, 126, 119),
       ),
       body: Consumer<AllData>(
         builder: (context, allData, child) => Stack(children: [
@@ -48,7 +49,7 @@ class _ScDaftarPesananState extends State<ScDaftarPesanan> {
             children: [
               Container(
                 height: 300,
-                padding: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 child: ListTile(
                   leading: const SizedBox(
                     width: 150,

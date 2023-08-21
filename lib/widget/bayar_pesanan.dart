@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_pesan_makanan/model/all_create.dart';
+
 import 'package:flutter_application_pesan_makanan/screen/sc_daftar_pesanan.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,6 @@ class BayarPesanan extends StatefulWidget {
 class _BayarPesananState extends State<BayarPesanan> {
   @override
   Widget build(BuildContext context) {
-    AllCreate ac = AllCreate();
     return Container(
       margin: const EdgeInsets.only(
         top: 530,
@@ -46,8 +45,10 @@ class _BayarPesananState extends State<BayarPesanan> {
           ),
           ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ScDaftarPesanan()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ScDaftarPesanan()));
               },
               child: const Text('Bayar Pesanan')),
         ],
