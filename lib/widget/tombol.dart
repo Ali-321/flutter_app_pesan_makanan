@@ -29,9 +29,9 @@ class _TombolState extends State<Tombol> {
               TextButton(
                   onPressed: () {
                     Provider.of<AllData>(context, listen: false)
-                        .incrementPesanan(widget.idMakanan);
+                        .decrementPesanan(widget.idMakanan, widget.index);
                   },
-                  child: const Icon(Icons.add)),
+                  child: const Icon(Icons.remove)),
               Container(
                 padding: const EdgeInsets.only(right: 8, left: 8),
                 child: Consumer<AllData>(builder: (context, value, child) {
@@ -42,9 +42,9 @@ class _TombolState extends State<Tombol> {
               TextButton(
                   onPressed: () {
                     Provider.of<AllData>(context, listen: false)
-                        .decrementPesanan(widget.idMakanan, widget.index);
+                        .incrementPesanan(widget.idMakanan);
                   },
-                  child: const Icon(Icons.remove)),
+                  child: const Icon(Icons.add)),
               Container(
                 padding: const EdgeInsets.only(right: 8, left: 8),
                 child: Consumer<AllData>(builder: (context, value, child) {

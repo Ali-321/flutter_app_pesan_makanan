@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_pesan_makanan/model/all_create.dart';
+import 'package:flutter_application_pesan_makanan/screen/sc_daftar_pesanan.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/all_data.dart';
@@ -43,7 +44,12 @@ class _BayarPesananState extends State<BayarPesanan> {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton(onPressed: () {}, child: Text('Bayar Pesanan')),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ScDaftarPesanan()));
+              },
+              child: const Text('Bayar Pesanan')),
         ],
       ),
     );

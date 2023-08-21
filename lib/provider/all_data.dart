@@ -5,7 +5,9 @@ import '../model/pesan.dart';
 
 class AllData extends ChangeNotifier {
   // int _tempJml = 0;
+  List<int> _indexPesan = [];
   List<Makanan> _makananList = [];
+  String? _selectedPembayaran;
   int _items = 0;
   int _totalPesanan = 0;
   //List<Pesan> _pesanList = [];
@@ -13,6 +15,8 @@ class AllData extends ChangeNotifier {
   List<Makanan> get makananList => _makananList;
   int get items => _items;
   int get totalPesanan => _totalPesanan;
+  String? get selectedPembayaran => _selectedPembayaran;
+  List<int> get indexPesan => _indexPesan;
 
   //List<Pesan> get pesanList => _pesanList;
   //int get tempJml => _tempJml;
@@ -27,6 +31,11 @@ class AllData extends ChangeNotifier {
     }
   }
 */
+
+  void pilihPembayaran(String? selectedPembayaran) {
+    _selectedPembayaran = selectedPembayaran;
+    notifyListeners();
+  }
 
 /*
   void decrement(int index) {
@@ -52,6 +61,7 @@ class AllData extends ChangeNotifier {
         _makananList.elementAt(i).total = _makananList.elementAt(i).jmlPesan *
             _makananList.elementAt(i).harga;
         if (0 < element.jmlPesan && element.jmlPesan == 1) {
+          _indexPesan.add(i);
           _items++;
         }
 
@@ -76,6 +86,7 @@ class AllData extends ChangeNotifier {
         i++;
       }
       if (0 == _makananList.elementAt(index).jmlPesan) {
+        _indexPesan.remove(index);
         _items--;
       }
     }
