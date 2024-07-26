@@ -22,9 +22,9 @@ class RiwayatPesanan {
       };
 
   static RiwayatPesanan fromJson(Map<String, dynamic> json) => RiwayatPesanan(
-      id: json['id'] as String,
-      items: json['items'],
-      total: json['total'],
+      id: json['id'] as String ,
+      items: json['items']as int,
+      total: json['total']as int,
       pembayaran: json['pembayaran'] as String,
       waktu: (json['waktu'] as Timestamp).toDate());
 }

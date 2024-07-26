@@ -37,12 +37,10 @@ class _ScMenuState extends State<ScMenu> {
             itemCount: allData.makananList.length,
             itemBuilder: (context, index) => Column(
               children: [
-                const SizedBox(
-                  height: 20,
-                ),
+                
                 ListTile(
                   leading: SizedBox(
-                      height: 350,
+                      height: 150,
                       width: 100,
                       child: Image(
                         image: NetworkImage(allData.makananList[index].gambar),

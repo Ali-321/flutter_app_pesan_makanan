@@ -62,7 +62,7 @@ class AllData extends ChangeNotifier {
   }
 
   Stream<List<RiwayatPesanan>> readRiwayatPesan() => FirebaseFirestore.instance
-      .collection('riwayatPesanan')
+      .collection('riwayatPesanan').orderBy('waktu', descending: true)
       .snapshots()
       .map((event) =>
           event.docs.map((e) => RiwayatPesanan.fromJson(e.data())).toList());

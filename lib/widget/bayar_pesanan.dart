@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../provider/all_data.dart';
 
 class BayarPesanan extends StatefulWidget {
-  BayarPesanan({
+  const BayarPesanan({
     Key? key,
   }) : super(key: key);
 

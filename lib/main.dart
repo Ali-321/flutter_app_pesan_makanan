@@ -4,14 +4,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_application_pesan_makanan/provider/all_data.dart';
 
 import 'package:flutter_application_pesan_makanan/screen/sc_menu.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'firebase/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await dotenv.load(fileName: "assets/.env");
+  } catch (e) {
+    print("Could not load .env file: $e");
+  }
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+ 
   runApp(const MyApp());
 }
 

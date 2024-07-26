@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
@@ -15,6 +15,7 @@ import 'package:flutter/foundation.dart'
 /// );
 /// ```
 class DefaultFirebaseOptions {
+
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
       return web;
@@ -43,8 +44,9 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyBGv8WovEDcCDWmtu2wl1nZ7vzSPuMPX3s',
+
+  static FirebaseOptions web = FirebaseOptions(
+    apiKey:dotenv.env['FAREBASE_API_KEY']!,
     appId: '1:78902634062:web:f2c15a105498593dabc51f',
     messagingSenderId: '78902634062',
     projectId: 'app-pesan-makanan',
@@ -52,16 +54,16 @@ class DefaultFirebaseOptions {
     storageBucket: 'app-pesan-makanan.appspot.com',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDQgmBQmluf39bxQMx0cNo9GWd3W7WPBnA',
+  static FirebaseOptions android = FirebaseOptions(
+    apiKey: dotenv.env['FAREBASE_API_KEY']!,
     appId: '1:78902634062:android:2425392ecd7be6a1abc51f',
     messagingSenderId: '78902634062',
     projectId: 'app-pesan-makanan',
     storageBucket: 'app-pesan-makanan.appspot.com',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCMCD-S37oxkdmzvhlim5GJ7lmJaAGg1Ig',
+  static  FirebaseOptions ios = FirebaseOptions(
+    apiKey: dotenv.env['FAREBASE_API_KEY']!,
     appId: '1:78902634062:ios:30d72a32bea11889abc51f',
     messagingSenderId: '78902634062',
     projectId: 'app-pesan-makanan',
@@ -70,8 +72,8 @@ class DefaultFirebaseOptions {
     iosBundleId: 'com.example.flutterApplicationPesanMakanan',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCMCD-S37oxkdmzvhlim5GJ7lmJaAGg1Ig',
+  static  FirebaseOptions macos = FirebaseOptions(
+    apiKey: dotenv.env['FAREBASE_API_KEY']!,
     appId: '1:78902634062:ios:6b4fad517976fac9abc51f',
     messagingSenderId: '78902634062',
     projectId: 'app-pesan-makanan',
